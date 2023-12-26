@@ -2,7 +2,10 @@
 using DataAccess;
 using BussinesLogic;
 using BussinesLogic.Repositories.Interfaces;
+using BussinesLogic.Repositories.Implementations;
+
 using DataAccess.Entities;
+using DataAccess.Repositories.Implementations;
 
 namespace Inventario.Controllers
 {
@@ -12,16 +15,16 @@ namespace Inventario.Controllers
     {
         private readonly IClientesServices _clientesServices;
 
-        public ClientesController(IClientesServices clientesServices) 
+        public ClientesController(IClientesServices clientesServices)
         {
             _clientesServices = clientesServices;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllClientesAsync()
+        public async Task<IActionResult> GetAllClientesPereyraAsync()
         {
-            var clientes = await _clientesServices.GetAllClientesAsync();
-            return Ok(clientes.ToList());
+            var clientesPereyra = await _clientesServices.GetAllClientesPereyra();
+            return Ok(clientesPereyra.ToList());
         }
     }
 }

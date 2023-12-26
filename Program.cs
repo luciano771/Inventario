@@ -6,27 +6,25 @@ using DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-// Registrando la interfaz y su implementación concreta
+ 
  
 
 
-// Inicio Conexion a la base
+//Conexion a la base
 builder.Services.AddDbContext<IventarioContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("API"));
     options.LogTo(Console.WriteLine);
 });
-//Fin Conexion a la base
+ 
 
 
+// Registrando las interfaces y sus implementaciones
 builder.Services.AddScoped<IClientesRepository, ClientesRepository>();
 builder.Services.AddScoped<IClientesServices, ClientesServices>();
 
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
