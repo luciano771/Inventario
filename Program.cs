@@ -1,5 +1,7 @@
 using BussinesLogic.Repositories.Implementations;
 using BussinesLogic.Repositories.Interfaces;
+using BussinessLogic.Implementations;
+using BussinessLogic.Interfaces;
 using DataAccess.Data;
 using DataAccess.Repositories.Implementations;
 using DataAccess.Repositories.Interfaces;
@@ -22,7 +24,8 @@ builder.Services.AddDbContext<IventarioContext>(options =>
 // Registrando las interfaces y sus implementaciones
 builder.Services.AddScoped<IClientesRepository, ClientesRepository>();
 builder.Services.AddScoped<IClientesServices, ClientesServices>();
-
+builder.Services.AddScoped<IVentasRepository, VentasRepository>();
+builder.Services.AddScoped<IVentasServices, VentasServices>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

@@ -26,5 +26,12 @@ namespace Inventario.Controllers
             var clientesPereyra = await _clientesServices.GetAllClientesPereyra();
             return Ok(clientesPereyra.ToList());
         }
+
+        [HttpPost]
+        public async Task<IActionResult> GetAllClientesAsync()
+        {
+            var clientes = await _clientesServices.GetAllClientesAsync();
+            return Ok(clientes.ToList());
+        }
     }
 }
