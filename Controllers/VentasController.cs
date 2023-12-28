@@ -1,5 +1,6 @@
-﻿using BussinesLogic.Repositories.Interfaces;
+﻿
 using BussinessLogic.Interfaces;
+using DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Inventario.Controllers
@@ -9,17 +10,17 @@ namespace Inventario.Controllers
     public class VentasController : Controller
     {
 
-        private readonly IVentasServices _ventasService;
+        private readonly IGeneralLogic<Ventas> _generalLogic;
 
-        public VentasController(IVentasServices ventasService)
+        public VentasController(IGeneralLogic<Ventas> GeneralLogic)
         {
-            _ventasService = ventasService;
+            _generalLogic = GeneralLogic;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllClientesPereyraAsync()
         {
-            var clientesPereyra = await _ventasService.GetAllVentasWithClientesAsync();
+            var clientesPereyra = await _generalLogic.GetAllAsync();
             return Ok(clientesPereyra.ToList());
         }
  
