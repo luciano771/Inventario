@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 //Conexion a la base
-builder.Services.AddDbContext<IventarioContext>(options =>
+builder.Services.AddDbContext<InventarioContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("API"));
     options.LogTo(Console.WriteLine);
@@ -37,16 +37,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
  
-
-//crear scope para que se ejecute cada vez que se ejecuta la app
-//using (var scope = app.Services.CreateScope()) 
-//{
-//    var dataContext = scope.ServiceProvider.GetRequiredService<IventarioContext>();
-//    dataContext.Database.Migrate();
-//}
-//fin scope
-
-// Configure the HTTP request pipeline.
  
 app.UseSwagger();
 app.UseSwaggerUI();
