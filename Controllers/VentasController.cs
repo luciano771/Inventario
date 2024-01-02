@@ -20,7 +20,7 @@ namespace Inventario.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllClientesPereyraAsync()
         {
-            var clientesPereyra = await _generalLogic.GetAllAsync();
+            var clientesPereyra = await _generalLogic.GetAll();
             return Ok(clientesPereyra.ToList());
         }
  
