@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "VPyrDafoq4HrG4mCHIfUaIkuf46DB6/XKFscuplgF30E5Ey11ipv9Q1ywegJiL/poNLGM6pDL/12OhdRfrD6MA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lucipereyra\\source\\repos\\Inventario\\InventarioBussinessLogic\\InventarioBussinessLogic.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lucipereyra\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\lucipereyra\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\lucipereyra\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}

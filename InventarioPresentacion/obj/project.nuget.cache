@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "k067Eo+xt3NylcMbV/uLaArolvynZp4TUjwOAe3EJTVyjEn4Upq/LUCAHrp7JDZSsjnlfC3aThIU3K9WGDR80A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lucipereyra\\source\\repos\\Inventario\\InventarioPresentacion\\InventarioPresentacion.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lucipereyra\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.25\\microsoft.windowsdesktop.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\lucipereyra\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.25\\microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\lucipereyra\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.25\\microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "C:\\Users\\lucipereyra\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.25\\microsoft.netcore.app.host.win-x64.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}
