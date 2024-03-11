@@ -1,0 +1,444 @@
+﻿@using InventarioDataAccess.Entities
+@using Microsoft.EntityFrameworkCore.Metadata.Internal;
+@model VentasViewModel
+@{
+    ViewData["Title"] = "Crear item de venta";
+}
+
+
+<!-- Estilos y scripts de DataTables y Bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap4.min.css">
+
+
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="d-flex justify-content-start col-12">
+            <h2 class="text-dark">Selecciona los productos</h2>
+        </div>
+
+
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="d-flex justify-content-start mb-2">
+                <!-- Botón Nuevo -->
+                
+                <button type="submit" class="btn btn-dark" onclick="abrirmodal()">Ver seleccionados</button>
+          
+
+            </div>
+            <br />
+
+
+
+            <table id="miTabla" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center text-nowrap">ID</th>
+                        <th class="text-center text-nowrap">Nombre</th>
+                        <th class="text-center text-nowrap">Precio</th>
+                        <th class="text-center text-nowrap">categoria</th>
+                        <th class="text-center text-nowrap">Agregar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.productos!= null)
+                    {
+                        var index = -1;
+                        @foreach (var productos in Model.productos)
+                        {
+                            index++;
+                            <tr style="text-align: center;">
+                                <td>@productos.ID<input type="hidden" name="Id" value="@productos.ID" data-action="DeleteCliente"></td>
+                                <td>@productos.Nombre</td>
+                                <td>@productos.precio </td>
+                                <td>@productos.categoria</td>
+                                <td>
+                                    <button id="{{id}}" data-id="@index" class="btn btn-danger" onclick="QuitarProducto(@index, @productos.ID)">
+                                        <i class="fas fa-minus"></i>
+                                    </button>                                  
+                                    <button class="btn btn-light">
+                                        <span id="cantidad-@index">0</span>
+                                    </button>
+                                    <button id="{{id}}" data-id="@index" class="btn btn-success" onclick="agregarProducto(@index, @productos.ID)">
+                                        <i class="fas fa-plus"></i>
+
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<!-- Modal para agregar productos -->
+<div class="modal fade" id="agregarProductoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="contenidoModal" class="modal-body table-responsive">
+                <!-- Aquí se aplicará la clase table-responsive para hacer la tabla adaptativa -->
+                <!-- tabla generada por JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModal()">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="agregarProductoAjax()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+<!-- Scripts al final del documento para garantizar la carga adecuada -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
+
+<!--font estilos-->
+<script src="https://kit.fontawesome.com/eaa3fcb206.js" crossorigin="anonymous"></script>
+
+<script>
+
+
+    var idcliente; // usada para modificar y eliminar
+
+
+    var mitabla = $('#miTabla').DataTable({
+        "paging": true,
+        "pageLength": 8, // Número de elementos por página
+        // "lengthChange": false,
+        "language": {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros  <br/> <br/>",
+            "sInfoEmpty": "Mostrando 0 a 0 de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sEmptyTable": "No hay datos disponibles en la tabla",
+            "sLoadingRecords": "Cargando...",
+            "sInfoThousands": ",",
+            "sDecimal": ".",
+            "sGroupThousands": ",",
+            "sSearchPlaceholder": "Introduce un valor",
+            "oPaginate": {
+                "sFirst": "Primero ",
+                "sPrevious": "Anterior",
+                "sNext": "Siguiente",
+                "sLast": "Último"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de forma ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de forma descendente"
+            }
+        },
+        // Modificar las columnas que se muestran
+        "columns": [
+            { "data": "id" },
+            { "data": "nombre" },
+            { "data": "precio" },
+            { "data": "categoria" },
+            { "data": "btnAgregar" },
+        ] 
+    });
+
+ 
+     
+    function cerrarModal() {
+        $(agregarProductoModal).modal('hide');
+    }
+
+  
+
+    var listaProductos = [];
+
+    function agregarProducto(index,idproducto) { // tomo los registros del datatables con el id del datatables, guardo y comparo con idproductos de la tabla productos
+
+        var spanCantidad = $('#cantidad-' + index);
+
+        // Verifica si el valor actual del span es un número válido
+        var cantidadActual = parseInt(spanCantidad.text(), 10);
+        if (isNaN(cantidadActual)) {
+            cantidadActual = 0;
+        }
+
+        // Incrementa la cantidad
+        var nuevaCantidad = cantidadActual + 1;
+
+        // Actualiza el texto del span con la nueva cantidad
+        spanCantidad.text(nuevaCantidad);
+
+        
+        var fila = mitabla.row(index).data();
+
+        var productoExistente = listaProductos.find(function (producto) {
+            return producto.id === idproducto;
+        });
+
+        if (productoExistente) 
+        {
+            productoExistente.cantidad++;
+        }
+        else
+        {
+            listaProductos.push({
+                id: idproducto,
+                nombre: fila.nombre,
+                precio: fila.precio,
+                categoria: fila.categoria,
+                cantidad: 1
+            });
+        }
+
+        actualizarVistaModal(); //deberia hacer que se ejecute solo una vez.
+  
+        console.log(listaProductos);
+
+        //abrirmodal();
+    }
+
+
+    function QuitarProducto(index, idproducto) {
+        var spanCantidad = $('#cantidad-' + index);
+        var cantidadActual = parseInt(spanCantidad.text(), 10);
+
+        // Asegurarse de que la cantidad no sea menor que 0
+        if (cantidadActual > 0) {
+            var nuevaCantidad = cantidadActual - 1;
+            spanCantidad.text(nuevaCantidad);
+
+            var productoExistente = listaProductos.find(function (producto) {
+                return producto.id === idproducto;
+            });
+
+            if (productoExistente) {
+                // Asegurarse de que la cantidad no sea menor que 0
+                if (productoExistente.cantidad > 0) {
+                    productoExistente.cantidad--;
+                }
+            }
+
+            // Filtrar la lista para mantener solo los productos con cantidad mayor que 0
+            listaProductos = listaProductos.filter(function (producto) {
+                return producto.cantidad > 0;
+            });
+
+            actualizarVistaModal();
+            console.log(listaProductos);
+        }
+    }
+
+
+
+
+
+    function actualizarVistaModal() {
+        // Actualiza la vista en el modal (mostrar la lista en una tabla con estilos de Bootstrap)
+        var contenidoModal = document.getElementById('contenidoModal');
+
+        // Limpiar el contenido actual
+        contenidoModal.innerHTML = '';
+
+        // Crear una tabla con estilos de Bootstrap
+        var tabla = document.createElement('table');
+        tabla.classList.add('table', 'table-striped', 'table-bordered' ); // Agrega la clase 'table-responsive'
+
+
+
+        // Crear encabezado de la tabla
+        var encabezado = document.createElement('thead');
+        var encabezadoFila = document.createElement('tr');
+
+        var encabezadoIDProducto = document.createElement('th');
+        encabezadoIDProducto.textContent = 'IDProducto';
+
+        var encabezadoNombre = document.createElement('th');
+        encabezadoNombre.textContent = 'Nombre';
+
+        var encabezadoPrecio = document.createElement('th');
+        encabezadoPrecio.textContent = 'Precio';
+
+        var encabezadoCantidad = document.createElement('th');
+        encabezadoCantidad.textContent = 'Cantidad';
+
+        var encabezadoCategoria = document.createElement('th');
+        encabezadoCategoria.textContent = 'Categoria';
+
+        encabezadoFila.appendChild(encabezadoIDProducto);
+        encabezadoFila.appendChild(encabezadoNombre);
+        encabezadoFila.appendChild(encabezadoPrecio);
+        encabezadoFila.appendChild(encabezadoCantidad);
+        encabezadoFila.appendChild(encabezadoCategoria);
+
+        encabezado.appendChild(encabezadoFila);
+        tabla.appendChild(encabezado);
+
+    
+
+        // Crear cuerpo de la tabla
+        var cuerpo = document.createElement('tbody');
+        for (var i = 0; i < listaProductos.length; i++) {
+
+            var producto = listaProductos[i];
+
+            var fila = document.createElement('tr');
+
+            var celdaIDProducto = document.createElement('td');
+            celdaIDProducto.textContent = producto.id;
+
+            var celdaNombre = document.createElement('td');
+            celdaNombre.textContent = producto.nombre;
+
+            var celdaPrecio = document.createElement('td');
+            celdaPrecio.textContent = producto.precio;
+
+            var celdaCantidad = document.createElement('td');
+            celdaCantidad.textContent = producto.cantidad;  // Asigna el valor de la propiedad cantidad
+
+            var celdaCategoria = document.createElement('td');
+            celdaCategoria.textContent = producto.categoria;  // Asigna el valor de la propiedad categoria
+
+            fila.appendChild(celdaIDProducto);
+            fila.appendChild(celdaNombre);
+            fila.appendChild(celdaPrecio);
+            fila.appendChild(celdaCantidad);
+            fila.appendChild(celdaCategoria);
+
+            cuerpo.appendChild(fila);
+        }
+
+        tabla.appendChild(cuerpo);
+
+        // Agregar la tabla al contenido del modal
+        contenidoModal.appendChild(tabla);
+    }
+
+ 
+
+
+
+    function abrirmodal() {
+        $(agregarProductoModal).modal('show');
+
+    }
+
+
+    function abrirmodalClientes() {
+        $(agregarClienteModal).modal('show');
+    }
+
+
+
+    async function CrearVenta() {
+
+        var IDVenta;
+
+        try {
+            var Total = 0;
+            var idcliente = new URLSearchParams(window.location.search).get("id");
+
+            // Itera sobre listaProductos para calcular el total
+            listaProductos.forEach(function (producto) {
+                var TotalProducto = producto.cantidad * producto.precio;
+                Total += TotalProducto;
+            });
+
+            var venta = {
+                IDCliente: idcliente,
+                Fecha: new Date().toISOString(),
+                Total: Total
+            };
+
+            // Realiza la solicitud AJAX
+            var result = await $.ajax({
+                url: 'https://localhost:7151/Ventas',
+                type: 'POST',
+                data: JSON.stringify(venta),
+                contentType: 'application/json',
+                dataType: 'json'
+            });
+
+            // Maneja el resultado
+            if (result.success) {
+                console.log('Venta creada con éxito. IDVenta:', result.idVenta);
+                IDVenta = result.idVenta;
+            } else {
+                console.error('Error al crear la venta:', result.message);
+            }
+        } catch (error) {
+            // Maneja errores inesperados
+            console.error('Error inesperado:', error);
+        }
+
+        
+
+        return IDVenta;
+    }
+
+
+
+
+    async function agregarProductoAjax(idproducto, idcliente) {
+
+        var IDVenta = await CrearVenta();
+
+        ventasItems = [];
+         
+        listaProductos.forEach(function (producto) {
+            ventasItems.push({
+                IDVenta: IDVenta,
+                IDProducto: producto.id,
+                PrecioUnitario: producto.precio,
+                Cantidad: producto.cantidad,
+                PrecioTotal: producto.cantidad * producto.precio
+            });
+        });
+
+  
+        if (listaProductos.length <= 0) {
+            return;
+        }
+
+
+        $.ajax({
+            url: 'https://localhost:7151/VentasItems',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(ventasItems),
+            success: function (data) {
+                console.log("Solicitud POST exitosa:", data);
+                window.location.href = 'https://localhost:7151/VentasItems?id=' + data.idVenta;
+            },
+            error: function (error) {
+                console.error("Error en la solicitud POST:", error);
+            }
+        });
+
+    }
+
+
+
+</script>

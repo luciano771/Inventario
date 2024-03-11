@@ -1,0 +1,15 @@
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\bin\Debug\net6.0\InventarioBussinessLogic.deps.json
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\bin\Debug\net6.0\InventarioBussinessLogic.dll
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\bin\Debug\net6.0\InventarioBussinessLogic.pdb
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\bin\Debug\net6.0\InventarioDataAccess.dll
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\bin\Debug\net6.0\InventarioDataAccess.pdb
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\InventarioBussinessLogic.csproj.AssemblyReference.cache
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\InventarioBussinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\InventarioBussinessLogic.AssemblyInfoInputs.cache
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\InventarioBussinessLogic.AssemblyInfo.cs
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\InventarioBussinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\InventarioBussinessLogic.csproj.CopyComplete
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\InventarioBussinessLogic.dll
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\refint\InventarioBussinessLogic.dll
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\InventarioBussinessLogic.pdb
+C:\Users\lucia\source\repos\Inventario\InventarioBussinessLogic\obj\Debug\net6.0\ref\InventarioBussinessLogic.dll

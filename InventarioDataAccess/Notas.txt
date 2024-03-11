@@ -1,0 +1,10 @@
+﻿﻿para realizar la migracion desde dataacess, ejecutr el siguiente comando desde dataaccess: 
+PM> dotnet ef migrations add migracion3 --context InventarioContext --project "../DataAccess/DataAccess.csproj" --startup-project "../InventarioMVC/InventarioMVC.csproj" 
+para realizar el update:
+dotnet ef database update --project "../DataAccess/DataAccess.csproj" --startup-project "../InventarioMVC/InventarioMVC.csproj"
+
+
+
+ PM> dotnet ef migrations add migracion1 --context InventarioContext --project "../Inventario/InventarioDataAccess/InventarioDataAccess.csproj" --startup-project "../Inventario/InventarioPresentacion.csproj/
+
+PM>  dotnet ef database update --project "../Inventario/InventarioDataAccess/InventarioDataAccess.csproj" --startup-project "../Inventario/InventarioPresentacion/InventarioPresentacion.csproj"

@@ -9,39 +9,61 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = InventarioPresentacion
 build_property.RootNamespace = InventarioPresentacion
-build_property.ProjectDir = C:\Users\lucipereyra\source\repos\Inventario\InventarioPresentacion\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = C:\Users\lucia\source\repos\Inventario\InventarioPresentacion\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\lucipereyra\source\repos\Inventario\InventarioPresentacion
+build_property.MSBuildProjectDirectory = C:\Users\lucia\source\repos\Inventario\InventarioPresentacion
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/lucipereyra/source/repos/Inventario/InventarioPresentacion/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/Clientes/Clientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcQ2xpZW50ZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lucipereyra/source/repos/Inventario/InventarioPresentacion/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lucipereyra/source/repos/Inventario/InventarioPresentacion/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lucipereyra/source/repos/Inventario/InventarioPresentacion/Pages/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/Productos/Productos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXFByb2R1Y3Rvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lucipereyra/source/repos/Inventario/InventarioPresentacion/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lucipereyra/source/repos/Inventario/InventarioPresentacion/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lucipereyra/source/repos/Inventario/InventarioPresentacion/Pages/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-udldkj7193
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/VentasItems/SeleccionarCliente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudGFzSXRlbXNcU2VsZWNjaW9uYXJDbGllbnRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/VentasItems/VentasItems.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudGFzSXRlbXNcVmVudGFzSXRlbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/VentasItems/VentasItemsCrear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudGFzSXRlbXNcVmVudGFzSXRlbXNDcmVhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/Ventas/Ventas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVudGFzXFZlbnRhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lucia/source/repos/Inventario/InventarioPresentacion/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-128s9vp42n

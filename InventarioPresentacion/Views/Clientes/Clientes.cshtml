@@ -1,0 +1,316 @@
+﻿@using InventarioDataAccess.Entities
+@using Microsoft.EntityFrameworkCore.Metadata.Internal;
+@model IEnumerable<Clientes>
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+
+<!-- Estilos y scripts de DataTables y Bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap4.min.css">
+ 
+<style>
+     
+
+    #miTabla {
+        background-color: white;
+    }
+   
+</style>
+
+
+<div class="container mt-4" id="body">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-primary">Lista de Clientes</h2>
+        </div>
+
+
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="d-flex justify-content-start mb-2">
+                <!-- Botón Nuevo -->
+                <button type="button" class="btn btn-primary" onclick="NuevoCliente()" style="margin-right: 10px;">Nuevo</button>
+  
+            </div>
+            <br />
+
+
+
+            <table id="miTabla" class="table table-striped table-bordered" >
+                <thead >
+                    <tr >
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Cliente</th>
+                        <th class="text-center">Teléfono</th>
+                        <th class="text-center">Correo</th>
+                        <th class="text-center">Eliminar</th>
+                        <th class="text-center">Modificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        var index = -1;
+                        @foreach (var cliente in Model)
+                        {
+                            index++;
+                            <tr style="text-align: center;">
+                                <td>@cliente.ID<input type="hidden" name="Id" value="@cliente.ID" data-action="DeleteCliente"></td>
+                                <td>@cliente.cliente</td>
+                                <td>@cliente.telefono</td>
+                                <td>@cliente.correo</td>
+                                <td>
+                                    <button class="btn btn-danger" onclick="eliminarCliente(@cliente.ID)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button id="{{id}}" data-id="@index" class="btn btn-warning" onclick="modificarCliente(this,@cliente.ID)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Mi Modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="cerrarModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario para cargar el nombre, correo y teléfono del cliente -->
+                <form asp-action="OnPostCrearCliente" method="POST">
+                    <div class="form-group">
+                        <label for="nombreCliente">Nombre:</label>
+                        <input id="cliente" type="text" class="form-control" name="cliente" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correoCliente">Correo:</label>
+                        <input id="correo" type="email" class="form-control" name="correo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefonoCliente">Teléfono:</label>
+                        <input id="telefono" type="tel" class="form-control" name="telefono" required>
+                    </div>
+                    <button id="nuevo" type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="modificar" type="submit" class="btn btn-warning" onclick="guardarModificacion()" style="display: none;">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="cerrarModal()">Cerrar</button>
+                <!-- Puedes agregar más botones según tus necesidades -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Scripts al final del documento para garantizar la carga adecuada -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js"></script>
+
+<!--font estilos-->
+<script src="https://kit.fontawesome.com/eaa3fcb206.js" crossorigin="anonymous"></script>
+
+<script>
+
+
+    var idcliente; // usada para modificar y eliminar
+    
+    
+   var mitabla =  $('#miTabla').DataTable({
+        "paging": true,
+        "pageLength": 8, // Número de elementos por página
+       // "lengthChange": false,
+        "language": {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ registros  <br/> <br/>",
+            "sInfoEmpty": "Mostrando 0 a 0 de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sEmptyTable": "No hay datos disponibles en la tabla",
+            "sLoadingRecords": "Cargando...",
+            "sInfoThousands": ",",
+            "sDecimal": ".",
+            "sGroupThousands": ",",
+            "sSearchPlaceholder": "Introduce un valor",
+            "oPaginate": {
+                "sFirst": "Primero ",
+                "sPrevious": "Anterior",
+                "sNext": "Siguiente",
+                "sLast": "Último"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de forma ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de forma descendente"
+            }
+        },
+        // Modificar las columnas que se muestran
+        "columns": [
+            { "data": "id" },
+            { "data": "cliente" },
+            { "data": "telefono" },
+            { "data": "correo" },
+            { "data": "btnEliminar" },
+            { "data": "btnModificar" }
+        ]
+    });
+ 
+    // Función para manejar la acción de eliminar
+    function eliminarCliente(idcliente) {
+        if (confirm('¿Está seguro de que desea eliminar este cliente?')) {
+            $.ajax({
+                url: '/Clientes/'+ idcliente,
+                type: 'DELETE',
+                success: function (result) {
+                    if (result.success) {
+                        // Mostrar mensaje de éxito si es necesario
+                        console.log(result.message);
+
+                        // Redirigir al URL proporcionado en el resultado
+                        window.location.href = result.redirectTo;
+                    } else {
+                        // Mostrar mensaje de error si es necesario
+                        console.error(result.message);
+                    }
+                },
+                error: function (error) {
+                    // Manejar error en el lado del cliente
+                    console.error('Error al actualizar el cliente', error);
+                }
+            });
+        }
+    }
+
+ 
+
+    // Inicializar DataTables con paginación
+
+    // Función para manejar la acción de modificar
+     
+    function modificarCliente(boton,ID) {
+         
+        var id = $(boton).data('id');
+        // Obtener los datos del cliente seleccionado
+        var cliente = mitabla.row(id).data();
+
+        // Comprobar si la fila se encontró
+        if (!cliente) {
+            // Maneja el caso en que no se encontró la fila
+            console.error("Fila seleccionada no encontrada");
+            return;
+        }
+        $('#myModal').modal('show');
+        // Rellena los campos del formulario con los datos del registro
+        idcliente = ID;
+        $("#cliente").val(cliente.cliente);
+        $("#telefono").val(cliente.telefono);
+        $("#correo").val(cliente.correo);
+
+        
+        $('#modificar').show();
+        $('#nuevo').hide();
+         
+        
+    }
+
+    
+
+
+    function guardarModificacion() {
+        var nombre = $('input[name="cliente"]').val();
+        var correo = $('input[name="correo"]').val();
+        var telefono = $('input[name="telefono"]').val();
+
+        // Crea un objeto de tipo Clientes
+        function Clientes(id, nombre, correo, telefono) {
+            this.ID = id;
+            this.cliente = nombre;
+            this.correo = correo;
+            this.telefono = telefono;
+        }
+        // Crea un objeto de tipo Clientes
+        var clientes = new Clientes(idcliente, nombre, correo, telefono);
+
+       
+        // Envia el objeto al controlador
+        try {
+            $.ajax({
+                url: 'https://localhost:7151/Clientes',
+                type: 'PUT',
+                data: JSON.stringify(clientes),
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    if (result.success) {
+                        // Mostrar mensaje de éxito si es necesario
+                        console.log(result.message);
+
+                        // Redirigir al URL proporcionado en el resultado
+                        window.location.href = result.redirectTo;
+                    } else {
+                        // Mostrar mensaje de error si es necesario
+                        console.error(result.message);
+                    }
+                },
+                error: function (error) {
+                    // Manejar error en el lado del cliente
+                    console.error('Error al actualizar el cliente', error);
+                }
+            });
+        } catch (e) {
+            // Handle the error
+        }
+
+        $('#myModal').modal('hide');
+    }
+   
+
+ 
+
+
+    function NuevoCliente(){
+        $('#myModal').modal('show');
+        $('#modificar').hide();
+        $('#nuevo').show();
+    }
+
+    
+    function cerrarModal() {
+        $('#myModal').modal('hide');
+    }
+
+
+    
+
+
+</script>

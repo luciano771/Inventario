@@ -1,0 +1,14 @@
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\bin\Debug\net6.0\InventarioDataAccess.deps.json
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\bin\Debug\net6.0\InventarioDataAccess.runtimeconfig.json
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\bin\Debug\net6.0\InventarioDataAccess.dll
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\bin\Debug\net6.0\InventarioDataAccess.pdb
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\InventarioDataAccess.csproj.AssemblyReference.cache
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\InventarioDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\InventarioDataAccess.AssemblyInfoInputs.cache
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\InventarioDataAccess.AssemblyInfo.cs
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\InventarioDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\InventarioDataAccess.dll
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\refint\InventarioDataAccess.dll
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\InventarioDataAccess.pdb
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\InventarioDataAccess.genruntimeconfig.cache
+C:\Users\lucia\source\repos\Inventario\InventarioDataAccess\obj\Debug\net6.0\ref\InventarioDataAccess.dll
