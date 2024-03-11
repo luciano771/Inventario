@@ -1,15 +1,5 @@
-﻿using InventarioPresentacion.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-
-
+﻿using Microsoft.AspNetCore.Mvc;
 using InventarioDataAccess.Entities;
-
-using InventarioDataAccess;
-using InventarioDataAccess.Repositories.Implementations;
-
-using InventarioDataAccess.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore;
 using InventarioBussinessLogic.Interfaces;
 
 namespace InventarioPresentacion.Controllers
