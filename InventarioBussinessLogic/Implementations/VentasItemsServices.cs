@@ -52,12 +52,7 @@ namespace InventarioBussinessLogic.Implementations
         {
             return  _ventasItemsRepository.GetAll();
         }
-
-        public Task<IQueryable<VentasItems>> GetAllPereyra()
-        {
-            throw new NotImplementedException();
-        }
-
+  
         public Task<IQueryable<VentasItems>> GetById(int id)
         {
             var QueryResult = _ventasItemsRepository.GetById(id);
@@ -111,7 +106,7 @@ namespace InventarioBussinessLogic.Implementations
 
         }
 
-        public async Task<bool> Delete2(VentasItems ventasItems)
+        public async Task<bool> DeleteEntity(VentasItems ventasItems)
         {
             var DeleteVentaItem = await _ventasItemsRepository.Delete(ventasItems.ID);
 

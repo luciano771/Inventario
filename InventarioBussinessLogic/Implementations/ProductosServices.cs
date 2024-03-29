@@ -23,13 +23,6 @@ namespace InventarioBussinessLogic.Implementations
             return _productosServices.GetAll();
         }
 
-        public async Task<IQueryable<Productos>> GetAllPereyra()
-        {
-            var productos = await _productosServices.GetAll();
-            var productosPereyra = productos.Where(c => c.ID > 3).AsQueryable();
-            return productosPereyra;
-        }
-
         public async Task<IQueryable<Productos>> GetById(int id)
         {
             return await _productosServices.GetById(id);
@@ -65,7 +58,7 @@ namespace InventarioBussinessLogic.Implementations
 
         }
 
-        public Task<bool> Delete2(Productos entity)
+        public Task<bool> DeleteEntity(Productos entity)
         {
             throw new NotImplementedException();
         }

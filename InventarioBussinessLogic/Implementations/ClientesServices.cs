@@ -21,20 +21,12 @@ namespace InventarioBussinessLogic.Implementations
         {
             _clientesRepository = clientesRepository;
         }
-
-
-        
+         
         public Task<IQueryable<Clientes>> GetAll()
         {
             return _clientesRepository.GetAll();
         }
-
-        public async Task<IQueryable<Clientes>> GetAllPereyra()
-        {
-            var clientes = await _clientesRepository.GetAll();
-            var clientesPereyra = clientes.Where(c => c.ID >3).AsQueryable();
-            return clientesPereyra;
-        }
+         
 
         public async Task<IQueryable<Clientes>> GetById(int id)
         {
@@ -71,7 +63,7 @@ namespace InventarioBussinessLogic.Implementations
 
         }
 
-        public Task<bool> Delete2(Clientes entity)
+        public Task<bool> DeleteEntity(Clientes entity)
         {
             throw new NotImplementedException();
         }

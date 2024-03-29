@@ -146,7 +146,8 @@ namespace InventarioPresentacion.Controllers
             ventasItems.ID = id; 
             ventasItems.IDVenta = idventa;
 
-            var DeleteObject = await _ventasItemsServices.Delete2(ventasItems);
+            var DeleteObject = await _ventasItemsServices.DeleteEntity
+                (ventasItems);
 
             if (DeleteObject)
             {
